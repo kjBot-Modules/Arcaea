@@ -17,6 +17,8 @@ class Recent extends Module{
         ];
         $data = json_decode(file_get_contents('https://arcapi.lowiro.com/4/user/me', false, stream_context_create($webHeader)))->value->friends;
 
+        if($data === NULL)q('Token 过期');
+
         foreach($data as $friend){
             if($friend->user_code == $args[1]??q('请提供查询ID')){
                 return $event->sendBack((new Score($friend->recent_score[0]))->toText());
