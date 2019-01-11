@@ -14,6 +14,8 @@ class Song{
 
     public static function CreateFromId($id){
         $data = \json_decode(\file_get_contents(__DIR__.'/Arcaea.Song.json'), true);
+        if(isset($data[$id]))
         return new Song($data[$id][0], $data[$id][1], $data[$id][2]);
+        else return NULL;
     }
 }
