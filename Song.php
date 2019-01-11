@@ -1,9 +1,6 @@
 <?php
 namespace kjBotModule\kj415j45\Arcaea;
 
-use kjBot\Framework\DataStorage;
-
-
 class Song{
     public $artist;
     public $title;
@@ -16,7 +13,7 @@ class Song{
     }
 
     public static function CreateFromId($id){
-        $data = \json_decode(DataStorage::GetData('Arcaea.Song.json'), true);
+        $data = \json_decode(\file_get_contents(__DIR__.'/Arcaea.Song.json'), true);
         return new Song($data[$id][0], $data[$id][1], $data[$id][2]);
     }
 }
