@@ -24,5 +24,7 @@ class Recent extends Module{
                 return $event->sendBack((new Score($friend->recent_score[0]))->toText());
             }
         }
+
+        q('玩家不在关注列表中');
     }
 }
