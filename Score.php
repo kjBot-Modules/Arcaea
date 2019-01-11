@@ -16,7 +16,7 @@ class Score{
     public $score;
 
     public function __construct($obj){
-        $this->performance = $obj->rating;
+        $this->performance = number_format($obj->rating, 2);
         $this->mod = $obj->modifier;
         $this->time = \DateTime::createFromFormat('U', intval($obj->time_played*0.001))->format('Y-m-d H:i:s');
         $this->hp = $obj->health;
@@ -38,6 +38,7 @@ class Score{
 {$this->time}
 
 {$this->score}[{$this->hp}/100] {$this->clearType}({$this->bestClearType})
+Rating: {$this->performance}
 Pure: {$this->countPerfect}({$this->countShinyPerfect})
 Far: {$this->countNear}
 Miss: {$this->countMiss}
