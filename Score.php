@@ -18,7 +18,9 @@ class Score{
     public function __construct($obj){
         $this->performance = number_format($obj->rating, 2);
         $this->mod = $obj->modifier;
-        $this->time = \DateTime::createFromFormat('U', intval($obj->time_played*0.001))->format('Y-m-d H:i:s');
+        $time = \DateTime::createFromFormat('U', intval($obj->time_played*0.001));
+        $time->setTimezone(new \DateTimeZone('Asia/Shanghai'));
+        $this->time = $time->format('Y-m-d H:i:s');
         $this->hp = $obj->health;
         $this->bestClearType = $obj->best_clear_type;
         $this->clearType = $obj->clear_type;
