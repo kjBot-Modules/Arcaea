@@ -9,7 +9,7 @@ use kjBotModule\kj415j45\CoreModule\AccessLevel;
 
 class Recent extends Module{
     public function process(array $args, MessageEvent $event): Message{
-        Access::Control($event)->requireLevel(AccessLevel::Developer);
+        Access::Control($event)->requireLevel(AccessLevel::Supporter);
         $webHeader = [
             "http" => [
                 "header" => 'Authorization: '.Config('arcaea_bearer'),
